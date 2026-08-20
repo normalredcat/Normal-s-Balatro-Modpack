@@ -1,0 +1,9 @@
+{
+    "id":"normalredcatbalatromod",
+    "name":"Normal's Balatro Mod",
+    "author":"Normal",
+    "description":"Another Balatro Mod with some new contents",
+    "prefix":"nrc",
+    "main_file":"main.lua",
+    "version":"0.0.1"
+}
