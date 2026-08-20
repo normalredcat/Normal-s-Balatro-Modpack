@@ -2,7 +2,7 @@
     "id":"normalredcatbalatromod",
     "name":"Normal's Balatro Mod",
      "display_name":"Normal's Balatro Mod",
-    "author":"Normal",
+    "author":["Normal"],
     "description":"Another Balatro Mod with some new contents",
     "prefix":"nrc",
     "main_file":"main.lua",
