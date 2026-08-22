@@ -1,13 +1,30 @@
 return {
     descriptions = {
+          Stake = {
+            stake_nrc_joker = {
+                name = "Joker Stake",
+                text = {
+                    "Jokers are less likely to appear on shop_jokers",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+            },
+        },
+         Voucher = {
+            v_nrc_luckycharm = {
+                name = "Lucky Charm",
+                text = {
+                    "Uncommon and Rare Jokers appear more frequently",
+                },
+            },
+        },
         Joker = {
             j_nrc_darksimpsons ={
                 name = 'Dark Joker',
                 text = {
-                    '{X:mult,C:white}X#1#{} Mult, destroy every', 
-                    'cards scored in final hand',
-                    'of round and gain {X:mult,C:white}X#2#{} Mult',
-                    'for each card destroyed'
+                    '{X:mult,C:white}X#1#{} Mult, gain {X:mult,C:white}X#2#{} Mult for each', 
+                    'card scored and destroy them',
+                    'at final hand of round',
+                  
             }
         },
             j_nrc_purple ={
@@ -37,7 +54,33 @@ return {
                     '(Discarded cards\' ranks must not be Ace)',
                     '(Removes all enhancement, seals and editions)'  
             }
-    }
+    },
+        j_nrc_PNM ={
+                name = 'Photo-Negative Joker',
+                text = {
+                    'Gain {X:mult,C:white}X#1#{} Mult for every', 
+                    '{C:attention}Negative{} Joker and remove',
+                    'C:attention}Ectoplasm{}\'s downside',
+                    '{S:0.8}(Scale Polynomial degree-2)'
+        
+            },},
+             j_nrc_noA ={
+                name = '0xA',
+                text = {
+                    '{X:mult,C:white}X#1#{} Mult if played hand', 
+                    'doesn\'t contain any Ace',       
+            },},
+      misc = {
+        challenge_names = {
+          
+        },
+        dictionary = {
+            k_nrc_crazy = 'Crazy'
+        },
+        labels = {
+            k_nrc_crazy = 'Crazy'
+}
+}
 }
 }
 }

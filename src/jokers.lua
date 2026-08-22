@@ -25,28 +25,25 @@ SMODS.Joker {
             }
     end,
 calculate = function(self, card, context)
-     if context.joker_main then
+    if context.joker_main then
         return {
             xmult=  card.ability.extra.xmults
         }
     end
 
 
-  if context.destroying_card and not context.blueprint and G.GAME.current_round.hands_left == 0 then
-        card.ability.extra.xmults= card.ability.extra.xmults + card.ability.extra.scaling
-        for i = 1, #context.full_hand,1 do
-            if context.destroying_card == context.full_hand[i] then
-            return {
+    if context.destroying_card and not context.blueprint and G.GAME.current_round.hands_left == 0 then
+        SMODS.scale_card(card, {
+            ref_table = card.ability.extra,
+            ref_value = 'xmults',
+            scalar_value ='scaling',
+            
+       })
+          return {   
                 remove = true,
-
-
+               
             }
-            end
-
-        end
-        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmults } }
     end
-
 end
 }
 --#endregion
@@ -79,7 +76,7 @@ SMODS.Joker {
             end
             return {
                 xmult = card.ability.extra.xmult * purple_seal,
-                chips = purple_seal
+          
             }
         end
     end,
@@ -156,4 +153,70 @@ SMODS.Joker {
             }
         end  
     end
+}
+SMODS.Joker {
+    key = "PNM",
+    atlas= 'placeholder',
+    blueprint_compat = true,
+    rarity = 'nrc_crazy',
+    cost = 12,
+    pos = { x = 4, y = 0 },
+    config = { extra = { xmult = 1 } },
+    loc_vars = function(self, info_queue, card)
+      --  info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
+        local negative_count = 1
+        if G.joker_cards ~=nil then
+        for i = 1, #G.jokers.cards do
+        if G.jokers.cards[i].edition and G.jokers.cards[i].edition.negative and G.jokers.cards[i].ability.set == 'Joker'then 
+            negative_count = negative_count + 1 end
+        end
+    end
+        return { vars = { negative_count+1, negative_count*(negative_count+1)/2 } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local negative_count = 1
+        for i = 1, #G.jokers.cards do
+        if G.jokers.cards[i].edition and G.jokers.cards[i].edition.negative and G.jokers.cards[i].ability.set == 'Joker'
+        then negative_count = negative_count + 1 end
+        end
+            return {
+                xmult =  negative_count*(negative_count+1)/2
+            }
+        end
+    end,
+
+    remove_from_deck = function(self, card, from_debuff)
+       G.GAME.ecto_minus = 1 
+    end
+}
+local smods_PNM_ref = SMODS.PNM
+function SMODS.PNM(...)
+    if next(SMODS.find_card('j_nrc_PNM')) then
+         G.GAME.ecto_minus = 0
+         return true
+    end
+    return smods_PNM_ref(...)
+end
+SMODS.Joker {
+    key = "noA",
+    atlas= 'placeholder',
+    blueprint_compat = true,
+    rarity = 'nrc_crazy',
+    cost = 15,
+    pos = { x = 0, y = 1 },
+    config = { extra = { xmult = 14 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+        for _,  played_card in context.full_hand do 
+            if played.card:get_id()==14 then
+            return
+            end
+        end
+        return {xmult = card.ability.extra.xmult}
+    end
+end
 }
