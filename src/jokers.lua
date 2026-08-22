@@ -221,3 +221,88 @@ SMODS.Joker {
     end
 end
 }
+SMODS.Joker {
+    key = "nosteal",
+    atlas= 'placeholder',
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 6,
+    pos = { x = 1, y = 1 },
+ --[[
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.rental_rate = 0
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.rental_rate = 3
+    end
+]]
+}
+SMODS.Joker {
+    key = "betonsomething",
+    atlas= 'placeholder',
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 5,
+    pos = { x = 2, y = 1 },
+    config = { extra = { blind = 2 , extra_money = 15} },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.blind,card.ability.extra.extra_money } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then   
+            G.GAME.blind.chips = G.GAME.blind.chips * card.ability.extra.blind 
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        return card.ability.extra.extra_money
+    end
+}
+SMODS.Joker {
+    key = "palindrome",
+    atlas= 'placeholder',
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 5,
+    pos = { x = 2, y = 1 },
+    config = { extra = { chips=0 ,scaling = 5} },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.scaling} }
+    end,
+ 
+     calculate = function(_, card, context)
+        if context.before and not context.blueprint then
+            if isPalindromic(context.scoring_hand, function(a, b)
+                return (a:get_id() == b:get_id())
+            end) and #context.scoring_hand>2 then
+                return SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "mult",
+                    scalar_value = "scaling",
+                })
+            end
+        end
+
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips,
+            }
+        end
+    end,
+}
+function isPalindromic(arr, comp)
+    ---@type fun(a: T, b: T): boolean
+    local eq = comp or function(a, b)
+        return a == b
+    end
+
+    local n = #arr
+    -- An empty array or a single-element array is trivially palindromic
+    for i = 1, math.floor(n / 2) do
+        if not eq(arr[i], arr[n - i + 1]) then
+            return false
+        end
+    end
+
+    return true
+end

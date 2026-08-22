@@ -4,7 +4,7 @@ return {
             stake_nrc_joker = {
                 name = "Joker Stake",
                 text = {
-                    "Jokers are less likely to appear on shop_jokers",
+                    "{C:attention}Jokers{} are less likely to appear on shop",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
@@ -89,6 +89,36 @@ return {
                     '{X:mult,C:white}X#1#{} Mult if played hand', 
                     'doesn\'t contain any Ace',       
             },},
+            j_nrc_nosteal = {
+                name = 'ORGINAL MONEY DO NOT STEAL',
+                text = {
+                    'Any way of losing money', 
+                    'are removed (except shops and rerolls)', 
+                    '{C:red,E:2}NOT MOD COMPATIBLE'
+
+            },},
+            j_nrc_betonsomething = {
+                name = 'Always bet on... something?',
+                text = {
+                    '{X:mult,C:black}X#1#{} blind requiremnt', 
+                    '{C:attention}$#2#{} at end of round', 
+                   
+
+            },
+        },
+          j_nrc_palindrome = {
+                name = 'Palindrome',
+                text = {
+                    'This joker gain {C:red}+#2#{} Mult if scoring hand', 
+                    'is palindrome and contains atleast 3 cards', 
+                    '(Currently {C:red}+#1#{} Mult)', 
+                    '{s=0.6}{C:inactive}(Special thanks to rhelv on discord for helping me)'
+                   
+
+            },
+        },
+        
+        
       misc = {
         challenge_names = {
           
