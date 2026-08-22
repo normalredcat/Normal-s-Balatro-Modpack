@@ -163,21 +163,22 @@ SMODS.Joker {
     pos = { x = 4, y = 0 },
     config = { extra = { xmult = 1 } },
     loc_vars = function(self, info_queue, card)
-      --  info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
         local negative_count = 1
-        if G.joker_cards ~=nil then
-        for i = 1, #G.jokers.cards do
-        if G.jokers.cards[i].edition and G.jokers.cards[i].edition.negative and G.jokers.cards[i].ability.set == 'Joker'then 
-            negative_count = negative_count + 1 end
+        if G.jokers ~= nil then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].edition and G.jokers.cards[i].edition.negative and 
+                G.jokers.cards[i].ability.set == 'Joker' then 
+                    negative_count = negative_count + 1 end
+                end
         end
-    end
-        return { vars = { negative_count+1, negative_count*(negative_count+1)/2 } }
+        return { vars = { card.ability.extra.xmult*negative_count+1, card.ability.extra.xmult*negative_count*(negative_count+1)/2 } }
     end,
     calculate = function(self, card, context)
         if context.joker_main then
             local negative_count = 1
         for i = 1, #G.jokers.cards do
-        if G.jokers.cards[i].edition and G.jokers.cards[i].edition.negative and G.jokers.cards[i].ability.set == 'Joker'
+        if G.jokers.cards[i].edition and G.jokers.cards[i].edition.negative and
+        G.jokers.cards[i].ability.set == 'Joker'
         then negative_count = negative_count + 1 end
         end
             return {
@@ -185,11 +186,11 @@ SMODS.Joker {
             }
         end
     end,
-
     remove_from_deck = function(self, card, from_debuff)
-       G.GAME.ecto_minus = 1 
+       G.GAME.ecto_minus = 1
     end
 }
+--[[
 local smods_PNM_ref = SMODS.PNM
 function SMODS.PNM(...)
     if next(SMODS.find_card('j_nrc_PNM')) then
@@ -197,7 +198,7 @@ function SMODS.PNM(...)
          return true
     end
     return smods_PNM_ref(...)
-end
+end]]
 SMODS.Joker {
     key = "noA",
     atlas= 'placeholder',
@@ -207,12 +208,12 @@ SMODS.Joker {
     pos = { x = 0, y = 1 },
     config = { extra = { xmult = 14 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { xmult } }
+        return { vars = { card.ability.extra.xmult } }
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-        for _,  played_card in context.full_hand do 
-            if played.card:get_id()==14 then
+        for i=1,#context.full_hand,1 do 
+            if context.full_hand[i]:get_id()==14 then
             return
             end
         end

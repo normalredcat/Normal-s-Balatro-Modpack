@@ -5,4 +5,7 @@ SMODS.Rarity {
     get_weight = function(self, weight, object_type)
         return weight
     end,
+    pools ={
+        ["Joker"]=true
+    }
 }

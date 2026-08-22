@@ -13,9 +13,27 @@ return {
             v_nrc_luckycharm = {
                 name = "Lucky Charm",
                 text = {
-                    "Uncommon and Rare Jokers appear more frequently",
+                    "{C:attention}Uncommon and {C:attention}Rare Jokers",
+                    "appear more frequently",
                 },
             },
+             v_nrc_jackpot = {
+                name = "Jackpot",
+                text = {
+                    "{C:attention}Jokers{} appear more frequently",
+                    "with higher chance to get",
+                    "rarer jokers"
+                },
+            },
+        },
+        Spectral = {
+            c_nrc_ectoplasm_fix = {
+            name = "Ectoplasm",
+            text = {
+                "Add {C:dark_edition}Negative{} to",
+                "a random {C:attention}Joker",
+    },
+},
         },
         Joker = {
             j_nrc_darksimpsons ={
@@ -60,8 +78,9 @@ return {
                 text = {
                     'Gain {X:mult,C:white}X#1#{} Mult for every', 
                     '{C:attention}Negative{} Joker and remove',
-                    'C:attention}Ectoplasm{}\'s downside',
-                    '{S:0.8}(Scale Polynomial degree-2)'
+                    '{C:attention}Ectoplasm{}\'s downside',
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    '{s:0.8}(Scale Polynomial degree-2)',
         
             },},
              j_nrc_noA ={
