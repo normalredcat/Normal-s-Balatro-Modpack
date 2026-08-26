@@ -109,9 +109,9 @@ return {
           j_nrc_palindrome = {
                 name = 'Palindrome',
                 text = {
-                    'This joker gain {C:red}+#2#{} Mult if scoring hand', 
+                    'This joker gain {C:chips}+#2#{} Chips if scoring hand', 
                     'is palindrome and contains atleast 3 cards', 
-                    '(Currently {C:red}+#1#{} Mult)', 
+                    '(Currently {C:chips}+#1#{} Chips)', 
                     '{s=0.6}{C:inactive}(Special thanks to rhelv on discord for helping me)'
                    
 

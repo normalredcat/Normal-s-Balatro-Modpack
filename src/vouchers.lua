@@ -2,7 +2,7 @@ SMODS.Voucher {
     key = 'luckycharm',
     atlas= 'placeholder',
     pos = { x = 0, y = 0 },
-    config = { extra = { uncommon_rate=2.5,rare_rate=2.5, display = 2 } },
+    config = { extra = { uncommon_rate=2,rare_rate=2.5, display = 2 } },
     unlocked = true,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.display, } }
@@ -22,7 +22,7 @@ SMODS.Voucher {
     key = 'jackpot',
     atlas= 'placeholder',
     pos = { x = 0, y = 0 },
-    config = { extra = { joker_rate=2,uncommon_rate=3,rare_rate=2.5,crazy_rate=5, display = 2 } },
+    config = { extra = { joker_rate=2,uncommon_rate=1.5,rare_rate=2.5,crazy_rate=5, display = 2 } },
     requires = { 'v_nrc_luckycharm' },
     unlocked = true,
     loc_vars = function(self, info_queue, card)

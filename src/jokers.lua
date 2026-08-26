@@ -225,8 +225,8 @@ SMODS.Joker {
     key = "nosteal",
     atlas= 'placeholder',
     blueprint_compat = false,
-    rarity = 2,
-    cost = 6,
+    rarity = 4,
+    cost = 20,
     pos = { x = 1, y = 1 },
  --[[
     add_to_deck = function(self, card, from_debuff)
@@ -242,9 +242,9 @@ SMODS.Joker {
     atlas= 'placeholder',
     blueprint_compat = false,
     rarity = 2,
-    cost = 5,
+    cost = 8,
     pos = { x = 2, y = 1 },
-    config = { extra = { blind = 2 , extra_money = 15} },
+    config = { extra = { blind = 2 , extra_money = 8} },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.blind,card.ability.extra.extra_money } }
     end,
