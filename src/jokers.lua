@@ -474,6 +474,14 @@ SMODS.Joker({
 	atlas = "placeholder",
 	pos = { x = 1, y = 2 },
 	config = { extra = { dollars = 7, reducerate = 1 } },
+   loc_vars = function(self, info_queue, card)
+		return {
+			vars = {
+				card.ability.extra.dollars,
+				card.ability.extra.reducerate,
+			},
+		}
+	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and context.game_over == false then
 			return {

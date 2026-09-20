@@ -16,7 +16,8 @@ return {
 			stake_nrc_joker = {
 				name = "Joker Stake",
 				text = {
-					"{C:attention}Jokers{} are less likely to appear on shop",
+					"{C:attention}Jokers{} are less likely",
+                     "to appear on shop",
 					"{s:0.8}Applies all previous Stakes",
 				},
 			},
@@ -122,6 +123,43 @@ return {
 					"is palindrome and contains atleast 3 cards",
 					"(Currently {C:chips}+#1#{} Chips and {C:red}+#1#{} Mult)",
 					"{s=0.6}{C:inactive}(Special thanks to rhelv on discord for helping me)",
+				},
+			},
+            j_nrc_99 = {
+				name = "NINENINE",
+				text = {
+					"{C:attention}Retrigger{} all {C:attention}9s #2# time",
+					"Each scored {C:attention}9s{} give",
+                    "{C:chips}+#3#{} Chips and {C:red}+#1#{} Mult"
+				},
+			},
+            j_nrc_74 = {
+				name = "74",
+				text = {
+					"Each scored {C:attention}7s{} and {C:attention}4s{} gives {C:chips}+#1#{} Chips",
+                    "{C:green,E:1}#2# in #3#{} chance to {C:red,E:2}self destructs"
+				},
+			},
+               j_nrc_pancake = {
+				name = "Exquisite 5 Stars Pancake",
+				text = {
+					"Earns {C:attention}$#1#{} and reduces money",
+                    "earned from this {C:attention} Joker by {C:attention}$#2#"
+				},
+			},j_nrc_star = {
+				name = "Power Star",
+				text = {
+					"^#1# Mult",
+                    "Gains ^#2# Mult if have atleast $100 at end of round"
+				},
+			},
+            j_nrc_eye = {
+				name = "Mr. I",
+				text = {
+					"^#1# Mult",
+                    "Reduces played hand level by one (if possible) and gains ^#2# Mult",
+                    "if hand played is the most, else gains ^#3# Mult"
+                    
 				},
 			},
 		},
