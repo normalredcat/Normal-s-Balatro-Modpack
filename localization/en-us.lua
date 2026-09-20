@@ -3,11 +3,11 @@ return {
 			challenge_names = {},
 			dictionary = {
 				k_nrc_crazy = "Crazy",
-                k_npc_op = "Very OP you will shit yourself"
+                k_npc_op = "OP"
 			},
 			labels = {
 				k_nrc_crazy = "Crazy",
-                k_nrc_op = "Very OP you will shit yourself",
+                k_nrc_op = "OP",
 			},
 		},
 	
