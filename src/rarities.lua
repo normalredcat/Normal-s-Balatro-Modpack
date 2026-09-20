@@ -9,3 +9,10 @@ SMODS.Rarity {
         ["Joker"]=true
     }
 }
+SMODS.Rarity {
+    key = 'nrc_op',
+    badge_colour = HEX("ff56a2"),
+    get_weight = function(self, weight, object_type)
+        return weight
+    end,
+}
