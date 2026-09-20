@@ -71,9 +71,7 @@ SMODS.Joker({
 	pos = { x = 1, y = 0 },
 	config = { extra = { xmult = 1, odds = 8 } },
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
-		info_queue[#info_queue + 2] = G.P_CENTERS.m_purple_seal
-
+		info_queue[#info_queue + 1] = G.P_SEALS.Purple
 		local purple_seal = 0
 		if G.playing_cards then
 			for _, playing_card in ipairs(G.playing_cards) do
@@ -506,6 +504,14 @@ SMODS.Joker({
 	atlas = "placeholder",
 	pos = { x = 2, y = 2 },
 	config = { extra = { emult = 2, scalar = 0.25 } },
+loc_vars = function(self, info_queue, card)
+		return {
+			vars = {
+				card.ability.extra.emult,
+				card.ability.extra.scalar,
+			},
+		}
+	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and context.game_over == false and G.GAME.dollars >= 100 and not context.blueprint then
 			SMODS.scale_card(card, {
@@ -527,6 +533,15 @@ SMODS.Joker({
 	atlas = "placeholder",
 	pos = { x = 3, y = 2 },
 	config = { extra = { emult = 1, highscalar = 0.15, lowscalar = 0.1 } },
+loc_vars = function(self, info_queue, card)
+		return {
+			vars = {
+				card.ability.extra.emult,
+				card.ability.extra.highscalar,
+     card.ability.extra.lowscalar
+			},
+		}
+	end,
 	calculate = function(self, card, context)
 		if context.before and not context.blueprint then
 			if not context.debuff_hand and G.GAME.hands[context.scoring_name].level > 1 then
